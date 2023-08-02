@@ -1,6 +1,5 @@
 import psycopg2
 import sys
-import random
 
 def parse_args(*args: tuple) -> str:
   txt: str = ''
