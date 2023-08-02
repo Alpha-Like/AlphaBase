@@ -11,7 +11,7 @@ def parse_args(*args: tuple) -> str:
 def iterable_to_string(iterable: tuple | list | set | dict) -> str:
   txt: str = ''
   for x in iterable:
-    txt += x
+    txt += x + ' '
   return txt.strip()
 
 class Database:
