@@ -1,7 +1,19 @@
 import psycopg2
-from typing import Tuple
 import sys
 import random
+
+def parse_args(*args: tuple) -> str:
+  txt: str = ''
+  for x in args:
+    txt += f'{x[0]} {x[1]}'
+    txt += ', '
+  return txt[:-1]
+
+def iterable_to_string(iterable: tuple | list | set | dict) -> str:
+  txt: str = ''
+  for x in iterable:
+    txt += x
+  return txt.strip()
 
 class Database:
   def __init__(
@@ -26,7 +38,7 @@ class Database:
       print(e)
       sys.exit()
   
-  def execute(self, *args: str) -> list[Tuple]:
+  def execute(self, *args: str) -> list[tuple]:
     for x in args:
       self.cursor.execute(args)
     try:
@@ -35,6 +47,18 @@ class Database:
       res: list = []
     self.conn.commit()
     return res
+
+  def create_table(self, table_name: str, *args: str):
+    self.execute(f'CREATE TABLE {table_name} ({iterable_to_string(*args)});')
+
+  def insert(self, table_name: str, values: tuple):
+    self.execute(f'INSERT INTO {table_name} VALUES ({iterable_to_string(values)});')
+
+  def remove(self, table_name: str, column_name: str, value):
+    self.execute(f'DELETE FROM {table_name} WHERE {column_name}={value};')
+
+  def drop(self, table_name: str):
+    self.execute(f'DROP TABLE {table_name};')
 
   def exit(self) -> bool:
     try:
