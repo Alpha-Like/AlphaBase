@@ -8,10 +8,10 @@ def parse_args(*args: tuple) -> str:
     txt += ', '
   return txt[:-1]
 
-def iterable_to_string(iterable: tuple | list | set | dict) -> str:
+def iterable_to_string(iterable: tuple | list | set | dict, seperator: str = ' ') -> str:
   txt: str = ''
   for x in iterable:
-    txt += x + ' '
+    txt += x + seperator
   return txt.strip()
 
 class Database:
