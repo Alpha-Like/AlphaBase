@@ -50,7 +50,8 @@ class Database:
   def create_table(self, table_name: str, *args: str):
     self.execute(f'CREATE TABLE {table_name} ({iterable_to_string(*args)});')
 
-  def insert(self, table_name: str, values: tuple):
+  def insert(self, table_name: str, *args):
+    values = *args
     self.execute(f'INSERT INTO {table_name} VALUES ({iterable_to_string(values)});')
 
   def remove(self, table_name: str, column_name: str, value):
