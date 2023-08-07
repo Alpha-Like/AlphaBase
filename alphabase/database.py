@@ -57,7 +57,7 @@ class Database:
   def delete(self, table_name: str, column_name: str, value):
     self.execute(f'DELETE FROM {table_name} WHERE {column_name}={value};')
 
-  def drop(self, table_name: str):
+  def drop_table(self, table_name: str):
     self.execute(f'DROP TABLE {table_name};')
 
   def exit(self) -> bool:
