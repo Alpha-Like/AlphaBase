@@ -33,7 +33,7 @@ class Database:
       )
       self.cursor = conn.cursor()
     except Exception as e:
-      print('Cannot connect to Database !')
+      print('Cannot connect to SQL Alphabase !')
       print(e)
       sys.exit()
   
