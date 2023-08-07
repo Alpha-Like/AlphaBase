@@ -54,7 +54,7 @@ class Database:
     values = *args
     self.execute(f'INSERT INTO {table_name} VALUES ({iterable_to_string(values)});')
 
-  def remove(self, table_name: str, column_name: str, value):
+  def delete(self, table_name: str, column_name: str, value):
     self.execute(f'DELETE FROM {table_name} WHERE {column_name}={value};')
 
   def drop(self, table_name: str):
