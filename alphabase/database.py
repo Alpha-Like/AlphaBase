@@ -21,7 +21,7 @@ class Database:
     port: int = 5432,
     dbname: str = 'postgres',
     user: str = 'postgres',
-    password
+    password: str
   ):
     try:
       self.conn = psycopg2.connect(
