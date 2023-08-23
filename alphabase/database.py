@@ -31,7 +31,7 @@ class Database:
         user=user,
         password=password
       )
-      self.cursor = conn.cursor()
+      self.cursor = self.conn.cursor()
     except Exception as e:
       print('Cannot connect to SQL Alphabase !')
       print(e)
